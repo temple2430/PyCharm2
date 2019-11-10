@@ -6,10 +6,8 @@ db = MySQLdb.connect(host="localhost", user="marco", passwd="root", db="marco")
 mycursor = db.cursor()
 
 sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
-val = [("James", "Glasgow"),
-       ("John3", "Edinburgh"),
-       ("Mark", "Dingwall"),
-       ("David","Aberdeen")]
+val = [("John", "Glasgow"),
+       ("George", "Edinburgh")]
 mycursor.executemany(sql, val)
 
 db.commit()
