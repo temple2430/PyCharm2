@@ -1,7 +1,7 @@
 import MySQLdb
 
 # Connect
-dba = MySQLdb.connect(host="localhost", user="marco", passwd="root", db="worls")
+dba = MySQLdb.connect(host="localhost", user="marco", passwd="root", db="world")
 
 mycursor = dba.cursor()
 
