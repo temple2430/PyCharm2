@@ -1,5 +1,7 @@
 import MySQLdb
 
+#pip install mysqlclient
+
 # Connect
 dba = MySQLdb.connect(host="localhost", user="marco", passwd="root", db="marco")
 
