@@ -23,13 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="c56e2e0d-015d-4fa3-bb37-8043ea4931aa">
-        <schema name="electronics" object-types="table, view, procedure, function" />
-        <schema name="sys" object-types="table, index, constraint, view, procedure, function, column, dataset trigger" />
-        <schema name="world" object-types="table, view, procedure, function" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="c56e2e0d-015d-4fa3-bb37-8043ea4931aa">
