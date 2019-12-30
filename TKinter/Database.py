@@ -16,6 +16,33 @@ cur = conn.cursor()
 #                state text,
  #               post_code integer)
  #           """)
+def update():
+    conn = sqlite3.connect('address_book.db')
+    cur = conn.cursor()
+
+    record_id = delete_box.get()
+    cur.execute("""UPDATE addresses SET
+        first_name = :first,
+        last_name = :last,
+        address = :address,
+        city = :city,
+        state = :state,
+        post_code = :post_code
+        
+        WHERE oid = :oid""",
+                {
+                    'first': f_name_editor.get(),
+                    'last': l_name_editor.get(),
+                    'address': address_editor.get(),
+                    'city': city_editor.get(),
+                    'state': state_editor.get(),
+                    'post_code': p_code_editor.get(),
+                    'oid': record_id
+                })
+
+    conn.commit()
+    conn.close()
+
 def edit():
     editor = Tk()
     editor.title('Update a Record')
@@ -27,6 +54,13 @@ def edit():
 
     cur.execute("SELECT * FROM addresses WHERE oid = " + record_id)
     records = cur.fetchall()
+
+    global f_name_editor
+    global l_name_editor
+    global address_editor
+    global city_editor
+    global state_editor
+    global p_code_editor
 
     f_name_editor = Entry(editor, width=30)
     f_name_editor.grid(row=0, column=1, padx=20, pady=(10, 0))
@@ -62,7 +96,7 @@ def edit():
         state_editor.insert(0, record[4])
         p_code_editor.insert(0, record[5])
 
-    save_btn = Button(editor, text="Save Record", command=edit)
+    save_btn = Button(editor, text="Save Record", command=update)
     save_btn.grid(row=6, column=0, columnspan=2, padx=10, pady=10, ipadx=105)
 
 def delete():
