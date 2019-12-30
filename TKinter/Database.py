@@ -42,8 +42,10 @@ def update():
 
     conn.commit()
     conn.close()
+    editor.destroy()
 
 def edit():
+    global editor
     editor = Tk()
     editor.title('Update a Record')
     editor.geometry("400x600")
