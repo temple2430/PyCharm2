@@ -17,7 +17,7 @@ def delete():
     conn = sqlite3.connect('address_book.db')
     cur = conn.cursor()
 
-    cur.execute("DELETE FROM addresses WHERE oid=")
+    cur.execute("DELETE FROM addresses WHERE oid=" + delete_box.get())
 
 
     conn.commit()
@@ -60,7 +60,7 @@ def query():
         print_records += str(record[0]) + " " + str(record[1]) + " " + "\t" + str(record[6]) + "\n"
 
     query_label =Label(root, text=print_records)
-    query_label.grid(row=8, column=0, columnspan=2)
+    query_label.grid(row=11, column=0, columnspan=2)
 
     conn.commit()
     conn.close()
@@ -79,6 +79,9 @@ state.grid(row=4, column=1)
 p_code = Entry(root, width=30)
 p_code.grid(row=5, column=1)
 
+delete_box = Entry(root, width=10)
+delete_box.grid(row=9, column=1)
+
 f_name_label = Label(root, text="First Name")
 f_name_label.grid(row=0, column=0, padx=20, pady=(10,0))
 l_name_label = Label(root, text="Last Name")
@@ -91,6 +94,8 @@ state_label = Label(root, text="County")
 state_label.grid(row=4, column=0)
 p_code_label = Label(root, text="Post Code")
 p_code_label.grid(row=5, column=0)
+delete_box_label = Label(root, text="Delete Number")
+delete_box_label.grid(row=9, column=0)
 
 submit_btn = Button(root, text="Submit Record", command=submit)
 submit_btn.grid(row=6, column=0, columnspan=2, padx=10, pady=10, ipadx=100)
@@ -99,7 +104,7 @@ query_btn = Button(root, text="Show Records", command=query)
 query_btn.grid(row=7, column=0, columnspan=2, padx=10, pady=10, ipadx=100)
 
 delete_btn = Button(root, text="Delete Record", command=delete)
-delete_btn.grid(row=9, column=0, columnspan=2, padx=10, pady=10, ipadx=100)
+delete_btn.grid(row=10, column=0, columnspan=2, padx=10, pady=10, ipadx=100)
 
 conn.commit()
 conn.close()
